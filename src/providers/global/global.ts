@@ -9,25 +9,25 @@ export class GlobalProvider {
     name: "BreakFast",
     imageURL: "breakfast.jpg",
     itemsNumber: "20",
-    pageURL: ""
+    pageURL: "BreakfastPage"
   },
   {
-    name: "Dinner",
+    name: "Diner",
     imageURL: "diner.jpg",
     itemsNumber: "64",
-    pageURL: ""
+    pageURL: "DinerPage"
   },
   {
     name: "Sweets",
     imageURL: "sweets.jpg",
     itemsNumber: "20",
-    pageURL: ""
+    pageURL: "SweetsPage"
   },
   {
     name: "Coffee",
     imageURL: "coffee.jpg",
     itemsNumber: "28",
-    pageURL: ""
+    pageURL: "CoffeePage"
   }];
   constructor(public http: Http) {
     

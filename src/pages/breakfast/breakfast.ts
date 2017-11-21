@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 
+@IonicPage()
 @Component({
   selector: 'page-breakfast',
   templateUrl: 'breakfast.html'

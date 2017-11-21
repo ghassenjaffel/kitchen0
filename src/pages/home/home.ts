@@ -17,4 +17,8 @@ export class HomePage {
     this.categories = this.globalServ.getCategories();
   }
 
+  goTo(Page){
+    this.navCtrl.push(Page);
+  }
+
 }

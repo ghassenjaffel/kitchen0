@@ -7,10 +7,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { CoffeePage } from '../pages/coffee/coffee';
-import { BreakfastPage } from '../pages/breakfast/breakfast';
-import { DinerPage } from '../pages/diner/diner';
-import { SweetsPage } from '../pages/sweets/sweets';
 //import { CreaterecipesPage} from '../pages/createrecipes/createrecipes';
 import { RecipesPage } from '../pages/recipes/recipes';
 import { GlobalProvider } from '../providers/global/global';
@@ -25,11 +21,7 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     HomePage,
     LoginPage,
-    CoffeePage,
     // CreaterecipesPage,
-    BreakfastPage,
-    DinerPage,
-    SweetsPage,
     SignupPage,
     RecipesPage
   ],
@@ -43,11 +35,7 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     HomePage,
     LoginPage,
-    CoffeePage,
     // CreaterecipesPage,
-    BreakfastPage,
-    DinerPage,
-    SweetsPage,
     SignupPage,
     RecipesPage
   ],

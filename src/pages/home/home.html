@@ -11,7 +11,7 @@
 <ion-content class="card-background-page">
   <ion-list>
     <ion-item *ngFor="let category of categories">
-      <ion-card>
+      <ion-card (click)="goTo(category.pageURL)">
         <img src="{{assetsURL}}categories/{{category.imageURL}}" />
         <div class="card-title">{{category.name}}</div>
         <div class="card-subtitle">{{category.itemsNumber}} Items</div>
