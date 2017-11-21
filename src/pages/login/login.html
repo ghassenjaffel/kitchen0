@@ -6,12 +6,12 @@
 		<ion-card-content>
 			<ion-list no-line>
 				<ion-item>
-					<ion-input type="text" placeholder="Username"></ion-input>
+					<ion-input type="text" placeholder="Username" [(ngModel)]="loginCredentials.username"></ion-input>
 				</ion-item>
 				<ion-item>
-					<ion-input type="password" placeholder="Password"></ion-input>
+					<ion-input type="password" placeholder="Password" [(ngModel)]="loginCredentials.password"></ion-input>
 				</ion-item>
-				<a>Forgot your login detail? <b>Get help signing in</b></a>
+				<a>Forgot your login detail?</a>
 				<button ion-button block outline color="light" (click)="signIn()">Log in</button>
 				<p>OR</p>
 				

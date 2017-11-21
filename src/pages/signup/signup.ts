@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'page-signup',
@@ -18,11 +19,12 @@ export class SignupPage {
     password: '',
     passwordRepeat: ''
   }
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public userServ: UserProvider) {
 
   }
 
   signup() {
+    // this.userServ.signup();
     this.navCtrl.push(HomePage);
   }
 

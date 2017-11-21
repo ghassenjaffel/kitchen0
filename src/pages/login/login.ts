@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'page-login',
@@ -10,20 +11,21 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
   loginCredentials: {
-    email: string,
+    username: string,
     password: string
   } = {
-    email: '',
-    password: ''
-  }
-  constructor(public navCtrl: NavController) {
+      username: '',
+      password: ''
+    }
+  constructor(public navCtrl: NavController, public userServ: UserProvider) {
 
   }
 
   signIn() {
-    this.navCtrl.push(HomePage);
+    // this.userServ.login();
+    this.navCtrl.setRoot(HomePage);
   }
-  goSignup(){
+  goSignup() {
     this.navCtrl.push(SignupPage);
   }
 

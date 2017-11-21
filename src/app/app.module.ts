@@ -17,6 +17,7 @@ import { GlobalProvider } from '../providers/global/global';
 import { NavigationProvider } from '../providers/navigation/navigation';
 import { HttpModule } from '@angular/http';
 import { SignupPage } from '../pages/signup/signup';
+import { UserProvider } from '../providers/user/user';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { SignupPage } from '../pages/signup/signup';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     GlobalProvider,
     NavigationProvider,
-    GlobalProvider
+    GlobalProvider,
+    UserProvider
   ]
 })
 export class AppModule { }

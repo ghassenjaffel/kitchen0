@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
@@ -10,8 +10,10 @@ export class HomePage {
   assetsURL: string = "assets/img/";
   categories: [any];
   constructor(public navCtrl: NavController,
-    public globalServ: GlobalProvider) {
+    public globalServ: GlobalProvider,
+    menu: MenuController) {
     // get categories list
+    menu.enable(true);
     this.categories = this.globalServ.getCategories();
   }
 
