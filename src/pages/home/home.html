@@ -1,33 +1,11 @@
-
-
-  
-  <ion-content class="card-background-page">
+<ion-content class="card-background-page">
+  <ion-list>
+    <ion-item *ngFor="let category of categories">
       <ion-card>
-        <a href=""><img src="assets/img/img_home/breakfast.jpg"/></a>
-        <div class="card-title">BreakFast</div>
-        <div class="card-subtitle">20 Items</div>
+        <img src="{{assetsURL}}categories/{{category.imageURL}}" />
+        <div class="card-title">{{category.name}}</div>
+        <div class="card-subtitle">{{category.itemsNumber}} Items</div>
       </ion-card>
-    
-      <ion-card>
-        <a href=""><img src="assets/img/img_home/diner.jpg"/></a>
-        <div class="card-title">Dinner</div>
-        <div class="card-subtitle">64 Items</div>
-      </ion-card>
-    
-      <ion-card>
-        <a href=""><img src="assets/img/img_home/sweets.jpg"/></a>
-        <div class="card-title">Sweets</div>
-        <div class="card-subtitle">72 Items</div>
-      </ion-card>
-    
-      <ion-card>
-        <a href=""><img src="assets/img/img_home/Coffee.jpg"/></a>
-        <div class="card-title">Coffee</div>
-        <div class="card-subtitle">28 Items</div>
-      </ion-card>
-      
-    <ion-content>
-    
-
-
-  
+    </ion-item>
+  </ion-list>
+  <ion-content>

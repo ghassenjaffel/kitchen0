@@ -12,7 +12,7 @@
 					<ion-input type="password" placeholder="Password"></ion-input>
 				</ion-item>
 				<a>Forgot your login detail? <b>Get help signing in</b></a>
-				<button ion-button block outline color="light">Log in</button>
+				<button ion-button block outline color="light" (click)="signIn()">Log in</button>
 				<p>OR</p>
 				
 					<button ion-button block color="facebook">
@@ -21,6 +21,6 @@
 			</ion-list>
 		</ion-card-content>
 	</ion-card>
-	<button class="bottom" ion-button clear full color="Red">Don't have an account? Sign up</button>
+	<button class="bottom" ion-button clear full (click)="goSignup()">Don't have an account? Sign up</button>
 </ion-content>
   

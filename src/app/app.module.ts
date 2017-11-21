@@ -8,13 +8,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CoffeePage } from '../pages/coffee/coffee';
-import { BreakfastPage} from '../pages/breakfast/breakfast';
+import { BreakfastPage } from '../pages/breakfast/breakfast';
 import { DinerPage } from '../pages/diner/diner';
 import { SweetsPage } from '../pages/sweets/sweets';
 //import { CreaterecipesPage} from '../pages/createrecipes/createrecipes';
-import { Sign_upPage } from '../pages/sign_up/sign_up';
-import { RecipesPage} from '../pages/recipes/recipes';
+import { RecipesPage } from '../pages/recipes/recipes';
 import { GlobalProvider } from '../providers/global/global';
+import { NavigationProvider } from '../providers/navigation/navigation';
+import { HttpModule } from '@angular/http';
+import { SignupPage } from '../pages/signup/signup';
 
 
 @NgModule({
@@ -23,18 +25,16 @@ import { GlobalProvider } from '../providers/global/global';
     HomePage,
     LoginPage,
     CoffeePage,
-   // CreaterecipesPage,
+    // CreaterecipesPage,
     BreakfastPage,
     DinerPage,
     SweetsPage,
-    Sign_upPage,
+    SignupPage,
     RecipesPage
-    
-    
-
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -43,21 +43,20 @@ import { GlobalProvider } from '../providers/global/global';
     HomePage,
     LoginPage,
     CoffeePage,
-   // CreaterecipesPage,
+    // CreaterecipesPage,
     BreakfastPage,
     DinerPage,
     SweetsPage,
-    Sign_upPage,
+    SignupPage,
     RecipesPage
-    
-
-
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    GlobalProvider,
+    NavigationProvider,
     GlobalProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 //import { CreaterecipesPage }  from '../pages/createrecipes/createrecipes';
-import { Sign_upPage } from '../pages/sign_up/sign_up';
 import { RecipesPage} from '../pages/recipes/recipes';
 
 
@@ -15,7 +14,7 @@ import { RecipesPage} from '../pages/recipes/recipes';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
