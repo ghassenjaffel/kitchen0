@@ -9,8 +9,8 @@ export class UserProvider {
     
   }
   
-  signup(){
-    console.log("signed !");
+  signup(userCred){
+    localStorage['user'] = JSON.stringify(userCred);
   }
 
   login(){

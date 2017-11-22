@@ -14,17 +14,19 @@ export class SignupPage {
     password: string,
     passwordRepeat: string
   } = {
-    username: '',
-    email: '',
-    password: '',
-    passwordRepeat: ''
-  }
+      username: '',
+      email: '',
+      password: '',
+      passwordRepeat: ''
+    }
   constructor(public navCtrl: NavController, public userServ: UserProvider) {
 
   }
 
   signup() {
-    // this.userServ.signup();
+    if (this.userCredentials) {
+      this.userServ.signup(this.userCredentials);
+    }
     this.navCtrl.push(HomePage);
   }
 

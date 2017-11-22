@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController } from 'ionic-angular';
+import { Platform, NavController, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -17,7 +17,9 @@ import { ViewChild } from '@angular/core';
 export class MyApp {
   rootPage:any = HomePage;
   @ViewChild('content') content: NavController;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    public alertCtrl: AlertController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -25,9 +27,28 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-
-  signout(){
-    console.log('disconected');
+  
+  showSignoutConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Alerte',
+      message: 'Are you sure you want to disconnect ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            confirm.dismiss();
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            localStorage.removeItem('user');
+            location.reload();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }
 
