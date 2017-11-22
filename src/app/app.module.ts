@@ -7,13 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-//import { CreaterecipesPage} from '../pages/createrecipes/createrecipes';
+import { CreateRecipPage } from '../pages/createrecipes/createrecipes';
 import { RecipesPage } from '../pages/recipes/recipes';
 import { GlobalProvider } from '../providers/global/global';
 import { NavigationProvider } from '../providers/navigation/navigation';
 import { HttpModule } from '@angular/http';
 import { SignupPage } from '../pages/signup/signup';
 import { UserProvider } from '../providers/user/user';
+import { PreviewRecipePage } from '../pages/preview-recipe/preview-recipe';
 
 
 @NgModule({
@@ -21,9 +22,10 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     HomePage,
     LoginPage,
-    // CreaterecipesPage,
     SignupPage,
-    RecipesPage
+    RecipesPage,
+    PreviewRecipePage,
+    CreateRecipPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { UserProvider } from '../providers/user/user';
     MyApp,
     HomePage,
     LoginPage,
-    // CreaterecipesPage,
+    PreviewRecipePage,
+    CreateRecipPage,
     SignupPage,
     RecipesPage
   ],

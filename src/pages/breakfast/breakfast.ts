@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 import { SignupPage } from '../signup/signup';
+import { PreviewRecipePage } from '../preview-recipe/preview-recipe';
+import { CreateRecipPage } from '../createrecipes/createrecipes';
 
 @IonicPage()
 @Component({
@@ -16,7 +18,16 @@ export class BreakfastPage {
 
   previewRecipe() {
     if (localStorage['user']) {
-      console.log("yo");
+      this.navCtrl.push(PreviewRecipePage);
+    }
+    else {
+      this.navCtrl.push(SignupPage);
+    }
+  }
+
+  addRecipe() {
+    if (localStorage['user']) {
+      this.navCtrl.push(CreateRecipPage);
     }
     else {
       this.navCtrl.push(SignupPage);

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
+import { PreviewRecipePage } from '../preview-recipe/preview-recipe';
 
 
 @IonicPage()
@@ -15,7 +16,7 @@ export class SweetsPage {
   }
   previewRecipe() {
     if (localStorage['user']) {
-      console.log("yo");
+      this.navCtrl.push(PreviewRecipePage);
     }
     else {
       this.navCtrl.push(SignupPage);
