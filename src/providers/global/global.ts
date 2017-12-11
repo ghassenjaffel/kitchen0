@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { observable, Observable } from '../../../www/build/vendor';
 
 
 @Injectable()
@@ -33,7 +34,15 @@ export class GlobalProvider {
     
   }
 
-  getCategories(){
-    return this.categories;
+  getCategories(): Observable<any> {
+    return this.http.get('http://localhost:3000/categories');
+  };
+
+  getRecipes(): Observable<any> {
+    return this.http.get('http://localhost:3000/recipes');
+  };
+
+  addRecipes(recipe): Observable<any> {
+    return this.http.post('http://localhost:3000/recipes', recipe);
   };
 }

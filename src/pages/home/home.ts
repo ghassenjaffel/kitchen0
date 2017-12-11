@@ -14,7 +14,9 @@ export class HomePage {
     menu: MenuController) {
     // get categories list
     menu.enable(true);
-    this.categories = this.globalServ.getCategories();
+    this.globalServ.getCategories().subscribe(returnedCat => {
+      this.categories = returnedCat;
+    });
   }
 
   goTo(Page){
