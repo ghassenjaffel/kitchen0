@@ -30364,6 +30364,43 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+.card-background-page ion-card {
+  position: relative;
+  text-align: center;
+}
+
+.card-background-page .card-title {
+  position: absolute;
+  top: 36%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #074BA3;
+  margin-top: 2px;
+}
+
+.card-background-page .card-subtitle {
+  font-size: 2.0em;
+  position: absolute;
+  top: 52%;
+  width: 100%;
+  color: #074BA3;
+  margin-top: 2px;
+}
+
+.add-btn {
+  margin-top: 5rem;
+}
+
+.ingredient-item {
+  position: relative;
+}
+
+.ingredient-icon {
+  position: absolute;
+  right: 10px;
+}
+
 page-home .card-background-page ion-card {
   position: relative;
   text-align: center;

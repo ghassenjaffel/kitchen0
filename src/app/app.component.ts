@@ -7,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 //import { CreaterecipesPage }  from '../pages/createrecipes/createrecipes';
-import { RecipesPage} from '../pages/recipes/recipes';
+import { RecipesPage } from '../pages/recipes/recipes';
 import { ViewChild } from '@angular/core';
 
 
@@ -15,7 +15,29 @@ import { ViewChild } from '@angular/core';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage: any = HomePage;
+  startBreakfastRecipes = [{
+    name: "Nut Butter, Banana, and Chia Seed Toast",
+    imageURL: "seed-toast.jpeg",
+    author: "John toast",
+    description: "Very good recipe",
+    ingredients: ['Oeuf', 'Banane', 'Fraise']
+  },
+  {
+    name: "Berry and Yogurt Smoothie",
+    imageURL: "smoothie.jpg",
+    author: "Patrick ghost",
+    description: "Very good recipe",
+    ingredients: ['Oeuf', 'Banane', 'Fraise']
+  },
+  {
+    name: "Savory Oatmeal With an Egg",
+    imageURL: "oatmeal.jpg",
+    author: "Jessy James",
+    description: "Very good recipe",
+    ingredients: ['Oeuf', 'Banane', 'Fraise']
+  },
+  ];
   @ViewChild('content') content: NavController;
   constructor(platform: Platform, statusBar: StatusBar,
     splashScreen: SplashScreen,
@@ -25,9 +47,26 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.registerCategories();
     });
   }
-  
+
+  registerCategories() {
+    if (!localStorage['breakfastList']) {
+      let __break = JSON.stringify(this.startBreakfastRecipes);
+      localStorage.setItem('breakfastList', __break);
+
+      let __diner = JSON.stringify(this.startBreakfastRecipes);
+      localStorage.setItem('dinerList', __diner);
+
+      let __coffee = JSON.stringify(this.startBreakfastRecipes);
+      localStorage.setItem('coffeeList', __coffee);
+
+      let __sweet = JSON.stringify(this.startBreakfastRecipes);
+      localStorage.setItem('sweetList', __sweet);
+    }
+  }
+
   showSignoutConfirm() {
     let confirm = this.alertCtrl.create({
       title: 'Alerte',

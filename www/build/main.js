@@ -1,14 +1,14 @@
 webpackJsonp([5],{
 
-/***/ 103:
+/***/ 104:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(81);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49,79 +49,6 @@ SignupPage = __decorate([
 ], SignupPage);
 
 //# sourceMappingURL=signup.js.map
-
-/***/ }),
-
-/***/ 104:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GlobalProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var GlobalProvider = (function () {
-    function GlobalProvider(http) {
-        this.http = http;
-        this.categories = [{
-                name: "BreakFast",
-                imageURL: "breakfast.jpg",
-                itemsNumber: "20",
-                pageURL: "BreakfastPage"
-            },
-            {
-                name: "Diner",
-                imageURL: "diner.jpg",
-                itemsNumber: "64",
-                pageURL: "DinerPage"
-            },
-            {
-                name: "Sweets",
-                imageURL: "sweets.jpg",
-                itemsNumber: "20",
-                pageURL: "SweetsPage"
-            },
-            {
-                name: "Coffee",
-                imageURL: "coffee.jpg",
-                itemsNumber: "28",
-                pageURL: "CoffeePage"
-            }];
-    }
-    GlobalProvider.prototype.getCategories = function () {
-        return this.http.get('http://localhost:3000/categories');
-    };
-    ;
-    GlobalProvider.prototype.getRecipes = function () {
-        return this.http.get('http://localhost:3000/recipes');
-    };
-    ;
-    GlobalProvider.prototype.addRecipes = function (recipe) {
-        return this.http.post('http://localhost:3000/recipes', recipe);
-    };
-    ;
-    return GlobalProvider;
-}());
-GlobalProvider = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
-], GlobalProvider);
-
-var _a;
-//# sourceMappingURL=global.js.map
 
 /***/ }),
 
@@ -234,24 +161,59 @@ PreviewRecipePage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateRecipPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__breakfast_breakfast__ = __webpack_require__(277);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
 
 var CreateRecipPage = (function () {
-    function CreateRecipPage() {
+    function CreateRecipPage(globalProv, navCtrl) {
+        this.globalProv = globalProv;
+        this.navCtrl = navCtrl;
+        this.recipe = {
+            name: '',
+            imageURL: 'seed-toast.jpeg',
+            author: '',
+            description: '',
+            ingredients: []
+        };
+        this.recipeCategory = '';
+        this.newIngredient = '';
+        this.user = JSON.parse(localStorage.getItem('user'));
     }
+    CreateRecipPage.prototype.addRecipe = function () {
+        this.recipe.author = this.user.username;
+        this.globalProv.addRecipe(this.recipe, this.recipeCategory);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__breakfast_breakfast__["a" /* BreakfastPage */]);
+    };
+    CreateRecipPage.prototype.addIngredient = function () {
+        this.recipe.ingredients.push(this.newIngredient);
+        this.newIngredient = '';
+    };
+    CreateRecipPage.prototype.removeIng = function (index) {
+        this.recipe.ingredients.splice(index, 1);
+    };
     return CreateRecipPage;
 }());
 CreateRecipPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-createrecipes',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/createrecipes/createrecipes.html"*/'<ion-header>\n    \n    <ion-navbar>\n        <ion-title>createRecip</ion-title>\n      </ion-navbar>\n    \n</ion-header>\n    <ion-content>\n      <div class="section">\n        \n      <ion-grid>\n            <ion-row>\n                <ion-col col-12>\n            <h4>Selectioner l\'image de la recette</h4>\n                </ion-col>\n              <ion-col col-6>\n        <button class="picbtn" *ngIf="!captureDataUrl" (click)="capture()"><ion-icon ios="ios-camera" md="md-camera"></ion-icon></button>\n              </ion-col>\n              <ion-col col-6>\n        <button class="picbtn" *ngIf="!captureDataUrl" (click)="getFromGalery()"> <ion-icon ios="ios-images" md="md-images"></ion-icon></button>\n              </ion-col>\n            </ion-row>\n        </ion-grid>\n        <img [src]="captureDataUrl" *ngIf="captureDataUrl" style="width:80% ; height:40vh; margin-left:10%"/>\n        <button class="deletebtn" (click)="deleteImg()" *ngIf="captureDataUrl" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>\n      </div>\n      <div class="section">\n          <ion-list>\n              <ion-grid>\n                  <ion-row>\n                      <ion-col col-12>\n                  <h4>Details de la recette</h4>\n                      </ion-col>\n                  </ion-row>\n              </ion-grid>\n              <ion-item>\n                  <ion-label floating>Title</ion-label>\n                  <ion-input [(ngModel)]="title" type="text"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Discription</ion-label>\n                    <ion-textarea [(ngModel)]="discription" name="description"></ion-textarea>\n                  </ion-item>\n          </ion-list>\n      </div> \n      <div class="section">\n        <ion-list>\n          <ion-item  *ngFor="let ingredient of ingredients">\n            {{ingredient.poids}} de {{ingredient.name}}\n          </ion-item>\n        </ion-list>\n          <ion-grid>\n              <ion-row>\n                  <ion-col col-12>\n              <h4>ingerdient de la recette</h4>\n                  </ion-col>\n              <ion-col col-3>\n              <ion-item>\n                 \n                  <ion-input [(ngModel)]="ingredientName" placeholder="Name"type="text"></ion-input>\n                  \n              </ion-item>\n              \n            </ion-col>   \n                <ion-col col-2>\n                      <ion-item>\n                      <ion-input [(ngModel)]="ingredientPoidsNbr" type="number"></ion-input>\n                    </ion-item>\n                      </ion-col>\n                      <ion-col col-3>\n                          <ion-item>\n                          <ion-select  [(ngModel)]="ingredientPoidsType" >\n                              <ion-option value="kg">KG</ion-option>\n                              <ion-option value="mg">MG</ion-option>\n                              <ion-option value="l">L</ion-option>\n                              <ion-option value="ml">ML</ion-option>\n                          </ion-select>\n                        </ion-item>\n                </ion-col>\n                <ion-col col-4>\n                      <button ion-button full (click)="addIngredient()"> <ion-icon ios="ios-add" md="md-add"> </ion-icon> Add</button> \n                </ion-col>\n             \n        </ion-row>\n      </ion-grid>\n      </div> \n      <button ion-button full (click)="addRecette()"> Envoyer la Recette</button> \n    </ion-content>\n'/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/createrecipes/createrecipes.html"*/
-    })
+        selector: 'page-createrecipes',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/createrecipes/createrecipes.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Ajouter recette</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-list no-lines>\n    <p>Détails de la recette</p>\n    <ion-item>\n      <ion-input type="text" placeholder="Entrer le nom de la recette" [(ngModel)]="recipe.name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Categorie</ion-label>\n      <ion-select [(ngModel)]="recipeCategory">\n        <ion-option value="bf">Breakfast</ion-option>\n        <ion-option value="di">Dinner</ion-option>\n        <ion-option value="co">Coffee</ion-option>\n        <ion-option value="sw">Sweets</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Entrer la description de la recette" [(ngModel)]="recipe.description"></ion-textarea>\n    </ion-item>\n    <p>Ingrédients de la recette</p>\n    <ion-item>\n      <ion-input type="text" placeholder="ajouter ingrédient .." [(ngModel)]="newIngredient"></ion-input>\n    </ion-item>\n    <ion-item text-right>\n      <button ion-button color="primary" (click)="addIngredient()">Ajouter +</button>\n    </ion-item>\n    <ion-item *ngFor="let ing of recipe.ingredients; let i = index" class="ingredient-item">\n      {{ ing }}\n      <ion-icon name="ios-trash-outline" class="ingredient-icon" (click)="removeIng(i)"></ion-icon>\n    </ion-item>\n    <button ion-button block class="add-btn" (click)="addRecipe()">Sauvegarder la recette</button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/createrecipes/createrecipes.html"*/
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object])
 ], CreateRecipPage);
 
+var _a, _b;
 //# sourceMappingURL=createrecipes.js.map
 
 /***/ }),
@@ -260,9 +222,62 @@ CreateRecipPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(81);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var LoginPage = (function () {
+    function LoginPage(navCtrl, userServ) {
+        this.navCtrl = navCtrl;
+        this.userServ = userServ;
+        this.loginCredentials = {
+            username: '',
+            password: ''
+        };
+    }
+    LoginPage.prototype.signIn = function () {
+        // this.userServ.login();
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
+    };
+    LoginPage.prototype.goSignup = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__signup_signup__["a" /* SignupPage */]);
+    };
+    return LoginPage;
+}());
+LoginPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-login',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/login/login.html"*/'<ion-content class="background">\n	<ion-card>\n		<ion-card-header>\n			LOGIN\n		</ion-card-header>\n		<ion-card-content>\n			<ion-list no-line>\n				<ion-item>\n					<ion-input type="text" placeholder="Username" [(ngModel)]="loginCredentials.username"></ion-input>\n				</ion-item>\n				<ion-item>\n					<ion-input type="password" placeholder="Password" [(ngModel)]="loginCredentials.password"></ion-input>\n				</ion-item>\n				<a>Forgot your login detail?</a>\n				<button ion-button block outline color="light" (click)="signIn()">Log in</button>\n				<p>OR</p>\n				\n					<button ion-button block color="facebook">\n						<ion-icon name="logo-facebook">Login with facebook</ion-icon> \n					</button>\n			</ion-list>\n		</ion-card-content>\n	</ion-card>\n	<button class="bottom" ion-button clear full (click)="goSignup()">Don\'t have an account? Sign up</button>\n</ion-content>\n  '/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/login/login.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
+], LoginPage);
+
+//# sourceMappingURL=login.js.map
+
+/***/ }),
+
+/***/ 202:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(221);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -270,7 +285,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 220:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -280,16 +295,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_createrecipes_createrecipes__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_recipes_recipes__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_global_global__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_global_global__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_navigation_navigation__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_user_user__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_user_user__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_preview_recipe_preview_recipe__ = __webpack_require__(199);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -368,7 +383,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 268:
+/***/ 269:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -377,7 +392,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(48);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -395,15 +410,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen, alertCtrl) {
+        var _this = this;
         this.alertCtrl = alertCtrl;
         this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
+        this.startBreakfastRecipes = [{
+                name: "Nut Butter, Banana, and Chia Seed Toast",
+                imageURL: "seed-toast.jpeg",
+                author: "John toast",
+                description: "Very good recipe",
+                ingredients: ['Oeuf', 'Banane', 'Fraise']
+            },
+            {
+                name: "Berry and Yogurt Smoothie",
+                imageURL: "smoothie.jpg",
+                author: "Patrick ghost",
+                description: "Very good recipe",
+                ingredients: ['Oeuf', 'Banane', 'Fraise']
+            },
+            {
+                name: "Savory Oatmeal With an Egg",
+                imageURL: "oatmeal.jpg",
+                author: "Jessy James",
+                description: "Very good recipe",
+                ingredients: ['Oeuf', 'Banane', 'Fraise']
+            },
+        ];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
+            _this.registerCategories();
         });
     }
+    MyApp.prototype.registerCategories = function () {
+        if (!localStorage['breakfastList']) {
+            var __break = JSON.stringify(this.startBreakfastRecipes);
+            localStorage.setItem('breakfastList', __break);
+            var __diner = JSON.stringify(this.startBreakfastRecipes);
+            localStorage.setItem('dinerList', __diner);
+            var __coffee = JSON.stringify(this.startBreakfastRecipes);
+            localStorage.setItem('coffeeList', __coffee);
+            var __sweet = JSON.stringify(this.startBreakfastRecipes);
+            localStorage.setItem('sweetList', __sweet);
+        }
+    };
     MyApp.prototype.showSignoutConfirm = function () {
         var confirm = this.alertCtrl.create({
             title: 'Alerte',
@@ -444,59 +495,6 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 269:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(80);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var LoginPage = (function () {
-    function LoginPage(navCtrl, userServ) {
-        this.navCtrl = navCtrl;
-        this.userServ = userServ;
-        this.loginCredentials = {
-            username: '',
-            password: ''
-        };
-    }
-    LoginPage.prototype.signIn = function () {
-        // this.userServ.login();
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
-    };
-    LoginPage.prototype.goSignup = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__signup_signup__["a" /* SignupPage */]);
-    };
-    return LoginPage;
-}());
-LoginPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/login/login.html"*/'<ion-content class="background">\n	<ion-card>\n		<ion-card-header>\n			LOGIN\n		</ion-card-header>\n		<ion-card-content>\n			<ion-list no-line>\n				<ion-item>\n					<ion-input type="text" placeholder="Username" [(ngModel)]="loginCredentials.username"></ion-input>\n				</ion-item>\n				<ion-item>\n					<ion-input type="password" placeholder="Password" [(ngModel)]="loginCredentials.password"></ion-input>\n				</ion-item>\n				<a>Forgot your login detail?</a>\n				<button ion-button block outline color="light" (click)="signIn()">Log in</button>\n				<p>OR</p>\n				\n					<button ion-button block color="facebook">\n						<ion-icon name="logo-facebook">Login with facebook</ion-icon> \n					</button>\n			</ion-list>\n		</ion-card-content>\n	</ion-card>\n	<button class="bottom" ion-button clear full (click)="goSignup()">Don\'t have an account? Sign up</button>\n</ion-content>\n  '/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/login/login.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
-], LoginPage);
-
-//# sourceMappingURL=login.js.map
-
-/***/ }),
-
 /***/ 270:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -504,7 +502,7 @@ LoginPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(40);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -519,12 +517,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var RecipesPage = (function () {
     function RecipesPage(navCtrl, globalServ) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.globalServ = globalServ;
-        this.globalServ.getCategories().subscribe(function (returnedRec) {
-            _this.recipes = returnedRec;
-        });
     }
     return RecipesPage;
 }());
@@ -532,10 +526,9 @@ RecipesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-recipes',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/recipes/recipes.html"*/'<ion-header>\n        <ion-navbar>\n          <ion-title aligne =\'center\' >Recipes</ion-title>\n        </ion-navbar>\n      </ion-header>\n      \n      <ion-content class="cards-bg recipes-cards">\n      \n      <ion-card>\n      \n        <ion-item>\n          <ion-avatar item-start>\n            <img src="assets/img/marty-avatar.png">\n          </ion-avatar>\n          <h2>Jaffel Ghassen</h2>\n          <p>November 5, 1955</p>\n        </ion-item>\n      \n        <img src="assets/img/advance-card-bttf.png">\n      \n        <ion-card-content>\n          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>\n        </ion-card-content>\n      \n        <ion-row>\n          <ion-col>\n            <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'thumbs-up\'></ion-icon>\n              12 Likes\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'text\'></ion-icon>\n              4 Comments\n            </button>\n          </ion-col>\n          <ion-col align-self-center text-center>\n            <ion-note>\n              11h ago\n            </ion-note>\n          </ion-col>\n        </ion-row>\n      \n      </ion-card>\n      \n      \n      <ion-card>\n      \n        <ion-item>\n          <ion-avatar item-start>\n            <img src="assets/img/sarah-avatar.png.jpeg">\n          </ion-avatar>\n          <h2>Sarah Connor</h2>\n          <p>May 12, 1984</p>\n        </ion-item>\n      \n        <img src="assets/img/advance-card-tmntr.jpg">\n      \n        <ion-card-content>\n          <p>I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life, maybe we can too.</p>\n        </ion-card-content>\n      \n        <ion-row>\n          <ion-col>\n            <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'thumbs-up\'></ion-icon>\n              30 Likes\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'text\'></ion-icon>\n              64 Comments\n            </button>\n          </ion-col>\n          <ion-col align-self-center text-center>\n            <ion-note>\n              30yr ago\n            </ion-note>\n          </ion-col>\n        </ion-row>\n      \n      </ion-card>\n      \n      \n      <ion-card>\n      \n        <ion-item>\n          <ion-avatar item-start>\n            <img src="assets/img/ian-avatar.png">\n          </ion-avatar>\n          <h2>Dr. Ian Malcolm</h2>\n          <p>June 28, 1990</p>\n        </ion-item>\n      \n        <img src="assets/img/advance-card-jp.jpg">\n      \n        <ion-card-content>\n          <p>Your scientists were so preoccupied with whether or not they could, that they didn\'t stop to think if they should.</p>\n        </ion-card-content>\n      \n        <ion-row>\n          <ion-col>\n            <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'thumbs-up\'></ion-icon>\n              46 Likes\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'text\'></ion-icon>\n              66 Comments\n            </button>\n          </ion-col>\n          <ion-col align-self-center text-center>\n            <ion-note>\n              2d ago\n            </ion-note>\n          </ion-col>\n        </ion-row>\n      \n      </ion-card>\n      \n      \n      </ion-content>'/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/recipes/recipes.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]])
 ], RecipesPage);
 
-var _a, _b;
 //# sourceMappingURL=recipes.js.map
 
 /***/ }),
@@ -546,8 +539,8 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavigationProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -583,14 +576,187 @@ NavigationProvider = __decorate([
 
 /***/ }),
 
-/***/ 47:
+/***/ 277:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BreakfastPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__preview_recipe_preview_recipe__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createrecipes_createrecipes__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login__ = __webpack_require__(201);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var BreakfastPage = (function () {
+    function BreakfastPage(navCtrl, globalProvider) {
+        this.navCtrl = navCtrl;
+        this.globalProvider = globalProvider;
+        this.assetsURL = "assets/img/recipes/breakfast/";
+        this.recipes = this.globalProvider.getBreakFastRecipes();
+    }
+    BreakfastPage.prototype.ionViewDidLoad = function () {
+        console.log(this.recipes, 'fucking recieeeeeeeeeeeeeeeeeeees');
+        this.recipes = this.globalProvider.getBreakFastRecipes();
+    };
+    BreakfastPage.prototype.previewRecipe = function () {
+        if (localStorage['user']) {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__preview_recipe_preview_recipe__["a" /* PreviewRecipePage */]);
+        }
+        else {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__login_login__["a" /* LoginPage */]);
+        }
+    };
+    BreakfastPage.prototype.addRecipe = function () {
+        if (localStorage['user']) {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__createrecipes_createrecipes__["a" /* CreateRecipPage */]);
+        }
+        else {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__login_login__["a" /* LoginPage */]);
+        }
+    };
+    return BreakfastPage;
+}());
+BreakfastPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-breakfast',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/breakfast/breakfast.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n        Breakfast Liste\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="card-background-page">\n  <ion-list>\n    <ion-item *ngFor="let recipe of recipes">\n      <ion-card>\n        <img src="{{assetsURL}}{{recipe.imageURL}}" />\n        <div class="card-title" text-wrap>{{recipe.name}}</div>\n        <div class="card-subtitle">By {{recipe.author}}</div>\n      </ion-card>\n    </ion-item>\n  </ion-list>\n  <ion-fab right bottom>\n    <button ion-fab color="danger" (click)="addRecipe()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/breakfast/breakfast.html"*/
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]) === "function" && _b || Object])
+], BreakfastPage);
+
+var _a, _b;
+//# sourceMappingURL=breakfast.js.map
+
+/***/ }),
+
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GlobalProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var GlobalProvider = (function () {
+    function GlobalProvider(http) {
+        this.http = http;
+        this.categories = [{
+                name: "BreakFast",
+                imageURL: "breakfast.jpg",
+                itemsNumber: "20",
+                pageURL: "BreakfastPage"
+            },
+            {
+                name: "Diner",
+                imageURL: "diner.jpg",
+                itemsNumber: "64",
+                pageURL: "DinerPage"
+            },
+            {
+                name: "Sweets",
+                imageURL: "sweets.jpg",
+                itemsNumber: "20",
+                pageURL: "SweetsPage"
+            },
+            {
+                name: "Coffee",
+                imageURL: "coffee.jpg",
+                itemsNumber: "28",
+                pageURL: "CoffeePage"
+            }];
+        this.breakfastRecipes = JSON.parse(localStorage.getItem('breakfastList'));
+        this.dinerRecipes = JSON.parse(localStorage.getItem('dinerList'));
+        this.coffeeRecipes = JSON.parse(localStorage.getItem('coffeeList'));
+        this.sweetRecipes = JSON.parse(localStorage.getItem('sweetList'));
+    }
+    GlobalProvider.prototype.getCategories = function () {
+        return this.categories;
+    };
+    GlobalProvider.prototype.getBreakFastRecipes = function () {
+        return this.breakfastRecipes;
+    };
+    GlobalProvider.prototype.getDinerRecipes = function () {
+        return this.dinerRecipes;
+    };
+    GlobalProvider.prototype.getCoffeeRecipes = function () {
+        return this.coffeeRecipes;
+    };
+    GlobalProvider.prototype.getSweetRecipes = function () {
+        return this.sweetRecipes;
+    };
+    GlobalProvider.prototype.addRecipe = function (recipe, category) {
+        switch (category) {
+            case 'bf':
+                this.breakfastRecipes.push(recipe);
+                var __breakfastRecipesUpdate = JSON.stringify(this.breakfastRecipes);
+                localStorage.setItem('breakfastList', __breakfastRecipesUpdate);
+                break;
+            case 'di':
+                this.dinerRecipes.push(recipe);
+                var __dinerUpdate = JSON.stringify(this.dinerRecipes);
+                localStorage.setItem('dinerList', __dinerUpdate);
+                break;
+            case 'co':
+                this.coffeeRecipes.push(recipe);
+                var __coffeeRecipes = JSON.stringify(this.coffeeRecipes);
+                localStorage.setItem('coffeeList', __coffeeRecipes);
+                break;
+            case 'sw':
+                this.sweetRecipes.push(recipe);
+                var __sweetRecipes = JSON.stringify(this.sweetRecipes);
+                localStorage.setItem('sweetList', __sweetRecipes);
+                break;
+            default:
+                break;
+        }
+    };
+    return GlobalProvider;
+}());
+GlobalProvider = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], GlobalProvider);
+
+var _a;
+//# sourceMappingURL=global.js.map
+
+/***/ }),
+
+/***/ 48:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(40);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -605,15 +771,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var HomePage = (function () {
     function HomePage(navCtrl, globalServ, menu) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.globalServ = globalServ;
         this.assetsURL = "assets/img/";
         // get categories list
         menu.enable(true);
-        this.globalServ.getCategories().subscribe(function (returnedCat) {
-            _this.categories = returnedCat;
-        });
+        this.categories = this.globalServ.getCategories();
     }
     HomePage.prototype.goTo = function (Page) {
         this.navCtrl.push(Page);
@@ -622,24 +785,25 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/home/home.html"*/'<ion-header>\n    <ion-toolbar>\n      <button ion-button menuToggle icon-only>\n        <ion-icon name=\'menu\'></ion-icon>\n      </button>\n      <ion-title>\n        Categories\n      </ion-title>\n    </ion-toolbar>\n  </ion-header>\n<ion-content class="card-background-page">\n  <ion-list>\n    <ion-item *ngFor="let category of categories">\n      <ion-card (click)="goTo(category.pageURL)">\n        <img src="{{assetsURL}}categories/{{category.imageURL}}" />\n        <div class="card-title">{{category.name}}</div>\n        <div class="card-subtitle">{{category.itemsNumber}} Items</div>\n      </ion-card>\n    </ion-item>\n  </ion-list>\n  <ion-content>\n'/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/home/skope/lab/ionic/kitchen0/src/pages/home/home.html"*/'<ion-header>\n  <ion-toolbar>\n    <button ion-button menuToggle icon-only>\n      <ion-icon name=\'menu\'></ion-icon>\n    </button>\n    <ion-title>\n      Categories\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content class="card-background-page">\n  <ion-list>\n    <ion-item *ngFor="let category of categories">\n      <ion-card (click)="goTo(category.pageURL)">\n        <img src="{{assetsURL}}categories/{{category.imageURL}}" />\n        <div class="card-title">{{category.name}}</div>\n        <div class="card-subtitle">{{category.itemsNumber}} Items</div>\n      </ion-card>\n    </ion-item>\n  </ion-list>\n<ion-content>\n'/*ion-inline-end:"/home/skope/lab/ionic/kitchen0/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */]])
 ], HomePage);
 
-var _a, _b, _c;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
 
-/***/ 80:
+/***/ 81:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -674,5 +838,5 @@ UserProvider = __decorate([
 
 /***/ })
 
-},[201]);
+},[202]);
 //# sourceMappingURL=main.js.map

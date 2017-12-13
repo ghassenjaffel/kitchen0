@@ -14,12 +14,11 @@ export class HomePage {
     menu: MenuController) {
     // get categories list
     menu.enable(true);
-    this.globalServ.getCategories().subscribe(returnedCat => {
-      this.categories = returnedCat;
-    });
+    this.categories = this.globalServ.getCategories();
+
   }
 
-  goTo(Page){
+  goTo(Page) {
     this.navCtrl.push(Page);
   }
 

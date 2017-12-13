@@ -4,6 +4,7 @@ import { GlobalProvider } from '../../providers/global/global';
 import { SignupPage } from '../signup/signup';
 import { PreviewRecipePage } from '../preview-recipe/preview-recipe';
 import { CreateRecipPage } from '../createrecipes/createrecipes';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -11,17 +12,25 @@ import { CreateRecipPage } from '../createrecipes/createrecipes';
   templateUrl: 'breakfast.html'
 })
 export class BreakfastPage {
-
+  assetsURL: string = "assets/img/recipes/breakfast/";
+  recipes: [any];
   constructor(public navCtrl: NavController,
-    public GlobalProvider: GlobalProvider) {
+    public globalProvider: GlobalProvider) {
+    this.recipes = this.globalProvider.getBreakFastRecipes();
   }
+
+  ionViewDidLoad() {
+    console.log(this.recipes, 'fucking recieeeeeeeeeeeeeeeeeeees')
+    this.recipes = this.globalProvider.getBreakFastRecipes();
+  }
+
 
   previewRecipe() {
     if (localStorage['user']) {
       this.navCtrl.push(PreviewRecipePage);
     }
     else {
-      this.navCtrl.push(SignupPage);
+      this.navCtrl.push(LoginPage);
     }
   }
 
@@ -30,7 +39,7 @@ export class BreakfastPage {
       this.navCtrl.push(CreateRecipPage);
     }
     else {
-      this.navCtrl.push(SignupPage);
+      this.navCtrl.push(LoginPage);
     }
   }
 
